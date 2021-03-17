@@ -20,4 +20,12 @@
         </div>
     </div>
 </div>
+<div>
+    <nav>
+        <ul>
+            <a href="photo/create"><li>Images</li></a>
+            <a href="user"><li>Users</li></a>
+        </ul>
+    </nav>
+</div>
 @endsection

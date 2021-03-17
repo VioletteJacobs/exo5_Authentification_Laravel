@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -24,7 +25,7 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        return view ("pages.create.createPhoto");
+        return view ("create.createPhoto");
     }
 
     /**
@@ -35,9 +36,12 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        $store = New Photo;
-        $store->img = $request->img;
-        $store->user_id = $request->user_id;
+        $store = new Photo;
+        Storage::disk("upload")->put('', $request->file('img'));
+        $store->img = $request->file("img")->hashName();
+        $store->user_id = $request->user()->id;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
