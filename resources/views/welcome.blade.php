@@ -59,6 +59,7 @@
                                    <h3>Tu es connectée</h3>
                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                         @csrf
+                                        <button type="submit">logout</button>
                                     </form>
                                     @else
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -76,8 +77,9 @@
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                   @foreach ($users as $item)
-                                  <p>{{$item->pseudo}}
-                                  {{$item->users}}</p>
+                                  {{-- <p>{{$item->pseudo}}
+                                  {{$item->users}}</p> --}}
+                                  <p>{{$item->profils->firstname}}</p>
                                   
                                   @endforeach
                                 </div>
@@ -93,8 +95,9 @@
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                     @foreach ($profils as $item)
-                                    <p>{{$item->name}}
-                                    {{$item->firstname}}</p>
+                                    {{-- <p>{{$item->name}}
+                                    {{$item->firstname}}</p> --}}
+                                    <p>{{$item->users->pseudo}}</p>
                                     
                                     @endforeach
                                 </div>
