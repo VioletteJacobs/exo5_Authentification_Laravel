@@ -40,7 +40,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // foreign key profil
     public function profils(){
         return $this->hasOne(Profil::class);
+    }
+    // foreign key photo
+    public function photos(){
+        return $this->hasMany(Photo::class);
     }
 }
